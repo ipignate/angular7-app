@@ -1,0 +1,32 @@
+
+<div class="Movies-panel">
+
+    <h3>All Movies</h3>
+
+
+    <mat-tab-group>
+
+        <mat-tab label="Beginners">
+
+            <Movies-card-list
+                    [Movies]="beginnerMovies$ | async">
+
+            </Movies-card-list>
+
+        </mat-tab>
+
+        <mat-tab label="Advanced">
+
+            <Movies-card-list
+                    [Movies]="advancedMovies$ | async"
+
+            ></Movies-card-list>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+
+
+</div>
+

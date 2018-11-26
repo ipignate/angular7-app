@@ -1,0 +1,65 @@
+<div class="Movie">
+
+    <h2>{{Movie?.description}}</h2>
+
+    <img class="Movie-thumbnail" [src]="Movie?.iconUrl">
+
+    <mat-form-field>
+
+        <input matInput placeholder="Search Actors" #input>
+
+    </mat-form-field>
+
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+
+        <mat-spinner></mat-spinner>
+
+    </div>
+
+    <mat-table class="Actors-table mat-elevation-z8" [dataSource]="dataSource"
+               matSort matSortActive="seqNo" matSortDirection="asc" matSortDisableClear>
+
+        <ng-container matColumnDef="seqNo">
+
+            <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+
+            <mat-cell *matCellDef="let Actor">{{Actor.seqNo}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+
+            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+
+            <mat-cell class="description-cell"
+                      *matCellDef="let Actor">{{Actor.description}}</mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="duration">
+
+            <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+
+            <mat-cell class="duration-cell"
+                      *matCellDef="let Actor">{{Actor.duration}}</mat-cell>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+
+
+    <mat-paginator [length]="Movie?.ActorsCount" [pageSize]="3"
+                   [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+
+
+</div>
+
+
+
+
+
+
